@@ -3,6 +3,10 @@
         <div id="bg">
             <form @submit.prevent="handleSubmit">
                 <div id="main">
+                    <h1 style="margin-bottom: 1rem; text-align: center; display: flex; justify-content: center; color: #ddd;">Painel RacconTech</h1>
+                    <div style="margin-bottom: 2rem; text-align: center; display: flex; justify-content: center;">
+                        <ion-img src="logo.png" style="width: 100px"></ion-img>
+                    </div>
                     <div>
                         <v-text-field name="password" label="Senha" type="password" class="w-100" variant="solo"></v-text-field>
                     </div>
@@ -26,15 +30,18 @@
 </template>
 
 <script lang="ts" setup>
-import { IonPage } from '@ionic/vue';
+import { IonPage, IonImg } from '@ionic/vue';
 import { VBtn, VTextField } from 'vuetify/lib/components/index.mjs';
 import axiosInstance from '@/fetchIntance';
 import { ref } from 'vue';
 import wait from '@/utils';
+import { useRouter } from 'vue-router';
 
 const isLoading = ref(false);
 const isLoginError = ref(false);
 const loginErrorMessage = ref('');
+
+const router = useRouter();
 
 async function handleSubmit(event: Event) {
     const {target} = event;
@@ -69,11 +76,13 @@ async function login(password: string) {
         if(response.data.data.login.error) {
             throw new Error(response.data.data.login.message);
         }
+
+        router.replace('/dashboard');
         
     } catch (error) {
         isLoginError.value = true;
         console.error(error);
-        loginErrorMessage.value = error.message;
+        loginErrorMessage.value = (error as Error).message;
     } 
     isLoading.value = false;
 }
