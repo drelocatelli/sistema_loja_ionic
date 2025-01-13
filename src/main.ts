@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import axios from 'axios';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -19,6 +20,7 @@ import '@ionic/vue/css/text-alignment.css';
 import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
+import 'vuetify/styles'
 
 /**
  * Ionic Dark Mode
@@ -29,14 +31,20 @@ import '@ionic/vue/css/display.css';
 
 /* @import '@ionic/vue/css/palettes/dark.always.css'; */
 /* @import '@ionic/vue/css/palettes/dark.class.css'; */
-import '@ionic/vue/css/palettes/dark.system.css';
+// import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/variables.scss';
+import { createVuetify } from 'vuetify/lib/framework.mjs';
+
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+
+const Vuetify = createVuetify();
 
 const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
+  .use(IonicVue, {mode: 'md'})
+  .use(Vuetify)
+  .use(router)
 
 router.isReady().then(() => {
   app.mount('#app');
