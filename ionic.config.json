@@ -1,0 +1,7 @@
+{
+  "name": "RaccoonTech Painel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
