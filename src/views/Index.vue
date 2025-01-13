@@ -1,23 +1,30 @@
 <template>
     <ion-page>
         <div id="bg">
-            <form @submit.prevent="handleSubmit">
-                <div id="main">
-                    <h1 style="margin-bottom: 1rem; text-align: center; display: flex; justify-content: center; color: #ddd;">Painel RacconTech</h1>
-                    <div style="margin-bottom: 2rem; text-align: center; display: flex; justify-content: center;">
-                        <ion-img src="logo.png" style="width: 100px"></ion-img>
-                    </div>
-                    <div>
-                        <v-text-field name="password" label="Senha" type="password" class="w-100" variant="solo"></v-text-field>
-                    </div>
-                    <div>
-                        <v-btn type="submit" :elevated="false" color="deep-orange-darken-1" :disabled="isLoading">
-                            <span v-if="!isLoading">Entrar</span>
-                            <ion-spinner name="dots" v-else></ion-spinner>
-                        </v-btn>
-                    </div>
+            <div id="main">
+                <div class="container">
+                    <form @submit.prevent="handleSubmit">
+                        <div id="main">
+                            <h1 style="margin-bottom: 1rem; text-align: center; display: flex; justify-content: center;">Painel RacconTech</h1>
+                            <div style="margin-bottom: 2rem; text-align: center; display: flex; justify-content: center;">
+                                <ion-img src="logo.png" style="width: 100px"></ion-img>
+                            </div>
+                            <div>
+                                <v-text-field name="password" label="Senha" type="password" class="w-100" variant="outlined"></v-text-field>
+                            </div>
+                            <div>
+                                <v-btn  type="submit" :elevated="false" color="orange-darken-2" :disabled="isLoading" style="display: flex; justify-content: flex-end; width: -webkit-fill-available; padding: 5px 1rem;">
+                                    <div v-if="!isLoading">
+                                        <span >Continuar</span>
+                                        <v-icon icon="mdi-arrow-right" style="margin-left: 6px;"></v-icon>
+                                    </div>
+                                    <ion-spinner name="dots" v-else></ion-spinner>
+                                </v-btn>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+                </div>
             <ion-alert
                 :is-open="isLoginError"
                 @did-dismiss="isLoginError = false"
@@ -31,7 +38,7 @@
 
 <script lang="ts" setup>
 import { IonPage, IonImg } from '@ionic/vue';
-import { VBtn, VTextField } from 'vuetify/lib/components/index.mjs';
+import { VBtn, VTextField, VIcon } from 'vuetify/lib/components/index.mjs';
 import axiosInstance from '@/fetchIntance';
 import { ref } from 'vue';
 import wait from '@/utils';
@@ -90,20 +97,33 @@ async function login(password: string) {
 
 <style lang="scss" scoped>
 #bg {
-    background: gray;
+    display: flex;
+    background: rgb(202, 201, 201);
+    height: 100vh;
+    color: #FF6600;
 }
 #main {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
-    height: 100vh;
+    align-items: center;
+    /* height: 100vh; */
     width: 80vw;
+
+    & > div {
+        width: 100%;
+    }
 
     :deep(input) {
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    & .container {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 10px;
     }
 
     @media screen and (min-width: 800px) {

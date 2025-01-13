@@ -21,6 +21,7 @@ import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 import 'vuetify/styles'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
 /**
  * Ionic Dark Mode
@@ -35,11 +36,20 @@ import 'vuetify/styles'
 
 /* Theme variables */
 import './theme/variables.scss';
+import '@mdi/font/css/materialdesignicons.css';
 import { createVuetify } from 'vuetify/lib/framework.mjs';
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
-const Vuetify = createVuetify();
+const Vuetify = createVuetify({
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi
+    }
+  }
+});
 
 const app = createApp(App)
   .use(IonicVue, {mode: 'md'})
