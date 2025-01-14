@@ -1,7 +1,7 @@
 <template>
     <ion-page>
-        <div id="bg">
-            <div id="main">
+        <ion-content>
+        <div id="main-wrapper">
                 <div class="container">
                     <form @submit.prevent="handleSubmit">
                         <div id="main">
@@ -32,12 +32,12 @@
                 :message="loginErrorMessage"
                 :buttons="['Fechar']"
              />
-        </div>
+        </ion-content>
     </ion-page>
 </template>
 
 <script lang="ts" setup>
-import { IonPage, IonImg } from '@ionic/vue';
+import { IonPage, IonImg, IonContent } from '@ionic/vue';
 import { VBtn, VTextField, VIcon } from 'vuetify/lib/components/index.mjs';
 import axiosInstance from '@/fetchIntance';
 import { ref } from 'vue';
@@ -96,29 +96,28 @@ async function login(password: string) {
 </script>
 
 <style lang="scss" scoped>
-#bg {
-    background: url('bg-render.jpg') no-repeat center center / cover;
-    display: flex;
+ion-content {
+    --background: url('bg-render.jpg') no-repeat center center / cover;
     height: 100vh;
-    color: #FF6600;
 }
-#main {
-    margin: 0 auto;
+#main-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
+    height: 100vh;
+    
+}
+#main {
+    margin: 0 auto;
+    background-color: #fff;
     width: 80vw;
+    padding: 1rem;
+    border-radius: 10px;
+
 
     & > div {
         width: 100%;
-    }
-
-    & .container {
-        background-color: #fff;
-        padding: 1rem;
-        border-radius: 10px;
     }
 
     @media screen and (min-width: 800px) {
