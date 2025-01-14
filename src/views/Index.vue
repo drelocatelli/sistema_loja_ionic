@@ -97,8 +97,8 @@ async function login(password: string) {
 
 <style lang="scss" scoped>
 #bg {
+    background: url('bg-render.png') no-repeat center center / cover;
     display: flex;
-    background: rgb(202, 201, 201);
     height: 100vh;
     color: #FF6600;
 }
@@ -115,11 +115,6 @@ async function login(password: string) {
         width: 100%;
     }
 
-    :deep(input) {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
     & .container {
         background-color: #fff;
         padding: 1rem;
@@ -127,7 +122,7 @@ async function login(password: string) {
     }
 
     @media screen and (min-width: 800px) {
-            width: 30vw;
+        width: 30vw;
     }
     
 }

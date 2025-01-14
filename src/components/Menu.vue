@@ -31,9 +31,11 @@
                 </v-btn>
             </li>
             <li>
-                <v-btn>
-                    <a href="javascript:void(0);">Sair</a>
-                </v-btn>
+                <router-link :to="{name: 'Index'}">
+                    <v-btn>
+                        Sair
+                    </v-btn>
+                </router-link>
             </li>
         </ul>
     </div>

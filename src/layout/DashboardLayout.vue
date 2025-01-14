@@ -22,9 +22,11 @@
                 </ion-toolbar>
             </ion-header>
             <ion-content class="ion-padding">
-                <div class="d-flex justify-space-between align-center">
+                <div class="main-content flex-wrap d-flex justify-space-between align-center">
                     <h1>{{props.pageTitle ?? 'Título da página'}}</h1>
-                    <slot name="actions" />
+                    <div>
+                        <slot name="actions" />
+                    </div>
                 </div>
                 <slot />
             </ion-content>
@@ -49,8 +51,12 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+ion-content {
+    --background: url('bg-render.png') no-repeat center center / cover;
+}
 #dashboard-wrapper {
-    --ion-background-color: var(--ion-background);
+    /* --ion-background-color: var(--ion-background); */
+    /* --ion-background: red; */
     --ion-toolbar-background: var(--ion-color-secondary);
     --ion-toolbar-color: var(--ion-light-color);
     --ion-toolbar-font-size: 12px;

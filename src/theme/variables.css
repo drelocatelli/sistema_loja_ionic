@@ -11,3 +11,8 @@ http://ionicframework.com/docs/theming/ */
     background: var(--ion-color-primary);
     color: var(--ion-light-color);
 }
+
+input {
+    padding-bottom: 0!important;
+    padding-top:0!important;
+}

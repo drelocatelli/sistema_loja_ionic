@@ -7,7 +7,7 @@ import DashboardRouteWrapper from '@/views/Dashboard/RouteWrapper.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '',
     component: Index,
     name: 'Index'
   },
