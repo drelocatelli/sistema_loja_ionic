@@ -84,6 +84,14 @@ ion-content {
         & ion-menu-button {
             display: none;
         }
+
+        
     }
 }
+
+@media screen and (min-width: 768px) {
+    ion-menu {
+            display: none;
+        }
+    }
 </style>

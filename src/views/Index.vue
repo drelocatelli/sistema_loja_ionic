@@ -84,7 +84,7 @@ async function login(password: string) {
             throw new Error(response.data.data.login.message);
         }
 
-        router.replace('/dashboard');
+        router.push('/dashboard');
         
     } catch (error) {
         isLoginError.value = true;

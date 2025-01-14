@@ -31,11 +31,11 @@
                 </v-btn>
             </li>
             <li>
-                <router-link :to="{name: 'Index'}">
+                <a href="/">
                     <v-btn>
                         Sair
                     </v-btn>
-                </router-link>
+                </a>
             </li>
         </ul>
     </div>
