@@ -97,7 +97,7 @@ async function login(password: string) {
 
 <style lang="scss" scoped>
 #bg {
-    background: url('bg-render.png') no-repeat center center / cover;
+    background: url('bg-render.jpg') no-repeat center center / cover;
     display: flex;
     height: 100vh;
     color: #FF6600;

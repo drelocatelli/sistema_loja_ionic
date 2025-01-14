@@ -52,7 +52,7 @@ onMounted(() => {
 
 <style lang="scss">
 ion-content {
-    --background: url('bg-render.png') no-repeat center center / cover;
+    --background: url('bg-render.jpg') no-repeat center center / cover;
 }
 #dashboard-wrapper {
     /* --ion-background-color: var(--ion-background); */
