@@ -39,6 +39,7 @@ import '@/theme/variables.scss';
 import '@/theme/variables.css';
 import '@mdi/font/css/materialdesignicons.css';
 import { createVuetify } from 'vuetify/lib/framework.mjs';
+import DashboardLayout from './layout/DashboardLayout.vue';
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
@@ -53,9 +54,11 @@ const Vuetify = createVuetify({
 });
 
 const app = createApp(App)
-  .use(IonicVue, {mode: 'md'})
-  .use(Vuetify)
-  .use(router)
+.use(IonicVue, {mode: 'md'})
+.use(Vuetify)
+.use(router)
+
+app.component('dashboard-layout', DashboardLayout)
 
 router.isReady().then(() => {
   app.mount('#app');

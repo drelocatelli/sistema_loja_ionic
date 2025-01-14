@@ -1,47 +1,46 @@
 <template>
     <div id="dashboard-wrapper">
-        <ion-app>
-            <ion-menu content-id="main-content" class="custom-menu">
-                <!-- <ion-header>
-                    <ion-toolbar>
-                        <ion-title>Menu</ion-title>
-                    </ion-toolbar>
-                </ion-header> -->
-                <ion-content class="ion-padding">
-                    <menu-component class="mobile" />
-                </ion-content>
-            </ion-menu>
-            <ion-page id="main-content">
-                <ion-header>
-                    <ion-toolbar>
-                        <ion-buttons slot="start">
-                            <ion-menu-button></ion-menu-button>
-                        </ion-buttons>
-                        <ion-title>
-                            <div class="header-wrapper">
-                                <div class="d-flex align-center ga-4">
-                                    <div>
-                                        <ion-img src="logo.png" style="width: 40px; height: auto;" />
-                                    </div>
-                                    <div>
-                                        Painel RaccoonTech
-                                    </div>
+        <ion-menu content-id="main-content" class="custom-menu">
+            <!-- <ion-header>
+                <ion-toolbar>
+                    <ion-title>Menu</ion-title>
+                </ion-toolbar>
+            </ion-header> -->
+            <ion-content class="ion-padding">
+                <menu-component class="mobile" />
+            </ion-content>
+        </ion-menu>
+        <ion-page id="main-content">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                    <ion-title>
+                        <div class="header-wrapper">
+                            <div class="d-flex align-center ga-4">
+                                <div>
+                                    <ion-img src="logo.png" style="width: 40px; height: auto;" />
                                 </div>
-                                <menu-component class="hide_mobile" />
+                                <div>
+                                    Painel RaccoonTech
+                                </div>
                             </div>
-                        </ion-title>
-                    </ion-toolbar>
-                </ion-header>
-                <ion-content class="ion-padding">
-                    <slot />
-                </ion-content>
-            </ion-page>
-        </ion-app>
+                            <menu-component class="hide_mobile" />
+                        </div>
+                    </ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <ion-router-outlet></ion-router-outlet>
+            </ion-content>
+        </ion-page>
+
     </div>
 </template>
 
 <script lang="ts" setup>
-import { IonMenu, IonHeader, IonToolbar, IonTitle, IonPage, IonButtons, IonMenuButton, IonContent, IonImg } from '@ionic/vue';
+import { IonMenu, IonHeader, IonToolbar, IonTitle, IonPage, IonButtons, IonMenuButton, IonContent, IonImg,IonRouterOutlet } from '@ionic/vue';
 import MenuComponent from '@/components/Menu.vue';
 
 </script>

@@ -4,5 +4,5 @@ http://ionicframework.com/docs/theming/ */
     --ion-background: #ddd;
     --ion-light-color: #fff;
     --ion-color-primary: #EF6C00;
-    --ion-color-secondary: var(--ion-color-medium);
+    --ion-color-secondary: #494949;
 }
