@@ -18,7 +18,7 @@
                                         <span >Continuar</span>
                                         <v-icon icon="mdi-arrow-right" style="margin-left: 6px;"></v-icon>
                                     </div>
-                                    <ion-spinner name="dots" v-else></ion-spinner>
+                                    <ion-spinner color="light" name="dots" v-else></ion-spinner>
                                 </v-btn>
                             </div>
                         </div>
@@ -39,10 +39,10 @@
 <script lang="ts" setup>
 import { IonPage, IonImg, IonContent } from '@ionic/vue';
 import { VBtn, VTextField, VIcon } from 'vuetify/lib/components/index.mjs';
-import axiosInstance from '@/fetchIntance';
 import { ref } from 'vue';
 import wait from '@/utils';
 import { useRouter } from 'vue-router';
+import { CapacitorHttp } from '@capacitor/core';
 
 const isLoading = ref(false);
 const isLoginError = ref(false);
@@ -62,46 +62,57 @@ async function handleSubmit(event: Event) {
      * @param {string} password the password to send in the request
      * @throws {Error} if the response is not ok
      */
-async function login(password: string) {
+     async function login(password: string) {
     isLoading.value = true;
     isLoginError.value = false;
     try {
         const query = `
-            mutation Login {
-                login(password: "${password}") {
+            mutation Login($password: String!) {
+                login(password: $password) {
                     error
                     message
                     token
                 }
             }
         `;
-        const response = await axiosInstance.post('', {
-            query,
-        });
-        await wait(1000);
 
-        if(response.data.data.login.error) {
+        const response = await CapacitorHttp.post({
+            url: import.meta.env.VITE_API_URL,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: {
+                query,
+                variables: { password },
+            },
+        });
+
+        await wait(800);
+
+
+        if (response.data.data.login.error) {
             throw new Error(response.data.data.login.message);
         }
 
         router.push('/dashboard');
-        
+
     } catch (error) {
         isLoginError.value = true;
         console.error(error);
         loginErrorMessage.value = (error as Error).message;
-    } 
+    }
     isLoading.value = false;
 }
 </script>
 
 <style lang="scss" scoped>
 ion-content {
-    --background: url('bg-render.jpg') no-repeat center center / cover;
+    --background: url('bg-render.png') no-repeat center center / cover;
     height: 100vh;
 }
 #main-wrapper {
     display: flex;
+    color: var(--ion-color-primary);
     flex-direction: column;
     justify-content: center;
     align-items: center;

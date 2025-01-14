@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-import axios from 'axios';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -41,7 +40,6 @@ import '@mdi/font/css/materialdesignicons.css';
 import { createVuetify } from 'vuetify/lib/framework.mjs';
 import DashboardLayout from './layout/DashboardLayout.vue';
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 const Vuetify = createVuetify({
   icons: {
