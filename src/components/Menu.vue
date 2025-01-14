@@ -2,14 +2,14 @@
     <div id="menu-wrapper">
         <ul>
             <li>
-                <router-link to="/dashboard">
+                <router-link :to="{name: 'dashboard'}">
                     <v-btn>
                         <a href="/dashboard">Geral</a>
                     </v-btn>
                 </router-link>
             </li>
             <li>
-                <router-link to="/dashboard/vendas">
+                <router-link :to="{name: 'sales'}">
                     <v-btn>
                         vendas
                     </v-btn>
@@ -41,7 +41,6 @@
 
 <script lang="ts" setup>
 import { VBtn } from 'vuetify/lib/components/index.mjs';
-
 </script>
 
 <style lang="scss" scoped>

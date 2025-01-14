@@ -1,20 +1,10 @@
 <template>
     <div id="dashboard-wrapper">
-        <ion-menu content-id="main-content" class="custom-menu">
-            <!-- <ion-header>
-                <ion-toolbar>
-                    <ion-title>Menu</ion-title>
-                </ion-toolbar>
-            </ion-header> -->
-            <ion-content class="ion-padding">
-                <menu-component class="mobile" />
-            </ion-content>
-        </ion-menu>
         <ion-page id="main-content">
             <ion-header>
                 <ion-toolbar>
                     <ion-buttons slot="start">
-                        <ion-menu-button></ion-menu-button>
+                        <ion-menu-button ></ion-menu-button>
                     </ion-buttons>
                     <ion-title>
                         <div class="header-wrapper">
@@ -32,16 +22,29 @@
                 </ion-toolbar>
             </ion-header>
             <ion-content class="ion-padding">
-                <ion-router-outlet></ion-router-outlet>
+                <div class="d-flex justify-space-between align-center">
+                    <h1>{{props.pageTitle ?? 'Título da página'}}</h1>
+                    <slot name="actions" />
+                </div>
+                <slot />
             </ion-content>
         </ion-page>
-
     </div>
 </template>
 
 <script lang="ts" setup>
-import { IonMenu, IonHeader, IonToolbar, IonTitle, IonPage, IonButtons, IonMenuButton, IonContent, IonImg,IonRouterOutlet } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonTitle, IonPage, IonButtons, IonMenuButton, IonContent, IonImg, menuController } from '@ionic/vue';
 import MenuComponent from '@/components/Menu.vue';
+import { onMounted } from 'vue';
+
+const props = defineProps({
+    pageTitle: String
+})
+
+onMounted(() => {
+    menuController.enable(true, 'main-menu');
+})
+
 
 </script>
 

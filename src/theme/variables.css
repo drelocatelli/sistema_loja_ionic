@@ -6,3 +6,8 @@ http://ionicframework.com/docs/theming/ */
     --ion-color-primary: #EF6C00;
     --ion-color-secondary: #494949;
 }
+
+.btn-orange {
+    background: var(--ion-color-primary);
+    color: var(--ion-light-color);
+}
