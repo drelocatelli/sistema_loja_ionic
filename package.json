@@ -24,6 +24,7 @@
     "axios": "^1.7.9",
     "ionicons": "^7.0.0",
     "sass": "^1.83.1",
+    "sass-loader": "^16.0.4",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0",
     "vuetify": "^3.7.6"

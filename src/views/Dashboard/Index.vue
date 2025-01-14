@@ -1,10 +1,15 @@
 <template>
-    <ion-page>
-        aa
-    </ion-page>
+    <dashboard-layout>
+        <template #menu>
+            aa
+        </template>
+        <template #default>
+            aabb
+        </template>
+    </dashboard-layout>
 </template>
 
 <script lang="ts" setup>
-import { IonPage } from '@ionic/vue';
+import DashboardLayout from '@/layout/DashboardLayout.vue';
 
 </script>
