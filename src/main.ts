@@ -34,7 +34,6 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 // import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
-import '@/theme/variables.scss';
 import '@/theme/variables.css';
 import '@mdi/font/css/materialdesignicons.css';
 import { createVuetify } from 'vuetify/lib/framework.mjs';

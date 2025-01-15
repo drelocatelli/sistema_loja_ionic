@@ -1306,12 +1306,12 @@
 
 "@parcel/watcher-linux-x64-glibc@2.5.0":
   version "2.5.0"
-  resolved "https://registry.npmjs.org/@parcel/watcher-linux-x64-glibc/-/watcher-linux-x64-glibc-2.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/@parcel/watcher-linux-x64-glibc/-/watcher-linux-x64-glibc-2.5.0.tgz#2e254600fda4e32d83942384d1106e1eed84494d"
   integrity sha512-d9AOkusyXARkFD66S6zlGXyzx5RvY+chTP9Jp0ypSTC9d4lzyRs9ovGf/80VCxjKddcUvnsGwCHWuF2EoPgWjw==
 
 "@parcel/watcher-linux-x64-musl@2.5.0":
   version "2.5.0"
-  resolved "https://registry.npmjs.org/@parcel/watcher-linux-x64-musl/-/watcher-linux-x64-musl-2.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/@parcel/watcher-linux-x64-musl/-/watcher-linux-x64-musl-2.5.0.tgz#01fcea60fedbb3225af808d3f0a7b11229792eef"
   integrity sha512-iqOC+GoTDoFyk/VYSFHwjHhYrk8bljW6zOhPuhi5t9ulqiYq1togGJB5e3PwYVFFfeVgc6pbz3JdQyDoBszVaA==
 
 "@parcel/watcher-win32-arm64@2.5.0":
@@ -1331,7 +1331,7 @@
 
 "@parcel/watcher@^2.4.1":
   version "2.5.0"
-  resolved "https://registry.npmjs.org/@parcel/watcher/-/watcher-2.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/@parcel/watcher/-/watcher-2.5.0.tgz#5c88818b12b8de4307a9d3e6dc3e28eba0dfbd10"
   integrity sha512-i0GV1yJnm2n3Yq1qw6QrUrd/LI9bE8WEBOTtOkpCXHHdyN3TAGgqAK/DAT05z4fq2x04cARXt2pDmjWjL92iTQ==
   dependencies:
     detect-libc "^1.0.3"
@@ -2193,7 +2193,7 @@ check-more-types@^2.24.0:
 
 chokidar@^4.0.0:
   version "4.0.3"
-  resolved "https://registry.npmjs.org/chokidar/-/chokidar-4.0.3.tgz"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-4.0.3.tgz#7be37a4c03c9aee1ecfe862a4a23b2c70c205d30"
   integrity sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==
   dependencies:
     readdirp "^4.0.1"
@@ -2470,7 +2470,7 @@ delayed-stream@~1.0.0:
 
 detect-libc@^1.0.3:
   version "1.0.3"
-  resolved "https://registry.npmjs.org/detect-libc/-/detect-libc-1.0.3.tgz"
+  resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==
 
 diff-sequences@^29.4.3:
@@ -3161,7 +3161,7 @@ ignore@^5.2.0, ignore@^5.2.4:
 
 immutable@^5.0.2:
   version "5.0.3"
-  resolved "https://registry.npmjs.org/immutable/-/immutable-5.0.3.tgz"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-5.0.3.tgz#aa037e2313ea7b5d400cd9298fa14e404c933db1"
   integrity sha512-P8IdPQHq3lA1xVeBRi5VPqUm5HDgKnx0Ru51wZz5mjxHr5n3RWhjIpOFU7ybkUxfB+5IToy+OLaHYDBIWsv+uw==
 
 import-fresh@^3.2.1:
@@ -3725,7 +3725,7 @@ neo-async@^2.6.2:
 
 node-addon-api@^7.0.0:
   version "7.1.1"
-  resolved "https://registry.npmjs.org/node-addon-api/-/node-addon-api-7.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-7.1.1.tgz#1aba6693b0f255258a049d621329329322aad558"
   integrity sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==
 
 node-releases@^2.0.19:
@@ -4059,7 +4059,7 @@ readable-stream@3:
 
 readdirp@^4.0.1:
   version "4.1.1"
-  resolved "https://registry.npmjs.org/readdirp/-/readdirp-4.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-4.1.1.tgz#bd115327129672dc47f87408f05df9bd9ca3ef55"
   integrity sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==
 
 regenerate-unicode-properties@^10.2.0:
@@ -4232,10 +4232,10 @@ sass-loader@^16.0.4:
   dependencies:
     neo-async "^2.6.2"
 
-sass@^1.83.1:
-  version "1.83.1"
-  resolved "https://registry.npmjs.org/sass/-/sass-1.83.1.tgz"
-  integrity sha512-EVJbDaEs4Rr3F0glJzFSOvtg2/oy2V/YrGFPqPY24UqcLDWcI9ZY5sN+qyO3c/QCZwzgfirvhXvINiJCE/OLcA==
+sass@^1.83.4:
+  version "1.83.4"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.83.4.tgz#5ccf60f43eb61eeec300b780b8dcb85f16eec6d1"
+  integrity sha512-B1bozCeNQiOgDcLd33e2Cs2U60wZwjUUXzh900ZyQF5qUasvMdDZYbQ566LJu7cqR+sAHlAfO6RMkaID5s6qpA==
   dependencies:
     chokidar "^4.0.0"
     immutable "^5.0.2"

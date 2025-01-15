@@ -61,11 +61,13 @@ import { VBtn } from 'vuetify/lib/components/index.mjs';
             & button {
                 background-color: transparent;
                 box-shadow: none;
-                padding: 0 10px;
+                padding: 8px 10px;
+                margin: 2px 0;
                 text-transform: capitalize;
                 width: -webkit-fill-available;
                 display: flex;
                 align-items: center;
+                font-size: 14px;
                 justify-content: space-between;
             }
 
