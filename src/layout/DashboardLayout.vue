@@ -47,7 +47,6 @@ onMounted(() => {
     menuController.enable(true, 'main-menu');
 })
 
-
 </script>
 
 <style lang="scss">

@@ -23,6 +23,7 @@
                             </div>
                             <br>
                             A senha é única para todos os colaboradores*
+                            <span style="display: block; color: grey; font-size:11px; text-align: right;">VERSÃO {{ getAppVersion() }}</span>
                         </div>
                     </form>
                 </div>
@@ -42,7 +43,7 @@
 import { IonPage, IonImg, IonContent, IonSpinner, IonAlert } from '@ionic/vue';
 import { VBtn, VTextField, VIcon } from 'vuetify/lib/components/index.mjs';
 import { ref } from 'vue';
-import wait from '@/utils';
+import {wait} from '@/utils';
 import { useRouter } from 'vue-router';
 import { CapacitorHttp } from '@capacitor/core';
 
@@ -51,6 +52,10 @@ const isLoginError = ref(false);
 const loginErrorMessage = ref('');
 
 const router = useRouter();
+
+function getAppVersion() {
+    return import.meta.env.VITE_APP_VERSION ?? 'Erro ao validar versão';
+}
 
 async function handleSubmit(event: Event) {
     const {target} = event;
@@ -85,7 +90,7 @@ async function login(password: string) {
         `;
 
         const response = await CapacitorHttp.post({
-            url: import.meta.env.VITE_API_URL,
+            url: `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}`,
             headers: {
                 'Content-Type': 'application/json',
             },

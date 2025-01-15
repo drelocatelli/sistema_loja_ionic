@@ -1,5 +1,7 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 :root {
     --ion-background: #ddd;
     --ion-light-color: #fff;
@@ -16,3 +18,15 @@ input {
     padding-bottom: 0!important;
     padding-top:0!important;
 }
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

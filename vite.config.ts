@@ -26,5 +26,5 @@ export default defineConfig({
         additionalData: `@import "./src/theme/variables.scss";`
       }
     }
-  }
+  },
 })
