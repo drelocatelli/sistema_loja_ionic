@@ -58,7 +58,7 @@ async function checkVersion() {
     isLoading.value = true;
     try {
         const response = await fetchData({
-            endpoint: `${import.meta.env.VITE_API_URL}/raccoontech/version.php`,
+            endpoint: `${import.meta.env.VITE_API_VERSION_URL}`,
             method: 'GET'
         });
 

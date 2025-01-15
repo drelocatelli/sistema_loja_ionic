@@ -21,6 +21,7 @@ import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 import 'vuetify/styles'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
+import { createPinia } from 'pinia';
 
 /**
  * Ionic Dark Mode
@@ -50,10 +51,12 @@ const Vuetify = createVuetify({
   }
 });
 
+const pinia = createPinia()
 const app = createApp(App)
 .use(IonicVue, {mode: 'md'})
 .use(Vuetify)
 .use(router)
+.use(pinia)
 
 app.component('dashboard-layout', DashboardLayout)
 
