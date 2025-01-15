@@ -21,6 +21,8 @@
                                     <ion-spinner color="light" name="dots" v-else></ion-spinner>
                                 </v-btn>
                             </div>
+                            <br>
+                            A senha é única para todos os colaboradores*
                         </div>
                     </form>
                 </div>
@@ -37,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IonPage, IonImg, IonContent } from '@ionic/vue';
+import { IonPage, IonImg, IonContent, IonSpinner, IonAlert } from '@ionic/vue';
 import { VBtn, VTextField, VIcon } from 'vuetify/lib/components/index.mjs';
 import { ref } from 'vue';
 import wait from '@/utils';
@@ -54,15 +56,21 @@ async function handleSubmit(event: Event) {
     const {target} = event;
     const formData = new FormData(target as HTMLFormElement);
     const data = Object.fromEntries(formData as any) as {password: string};
-    await login(data.password);
+    isLoginError.value = false;
+    if(data.password) {
+        await login(data.password);
+        return;
+    }
+    isLoginError.value = true;
+    loginErrorMessage.value = 'Preencha a senha';
 }
 
-    /**
-     * Send a POST request to the login endpoint.
-     * @param {string} password the password to send in the request
-     * @throws {Error} if the response is not ok
-     */
-     async function login(password: string) {
+/**
+ * Send a POST request to the login endpoint.
+ * @param {string} password the password to send in the request
+ * @throws {Error} if the response is not ok
+ */
+async function login(password: string) {
     isLoading.value = true;
     isLoginError.value = false;
     try {
@@ -88,6 +96,8 @@ async function handleSubmit(event: Event) {
         });
 
         await wait(800);
+
+        console.log(response.data.data)
 
 
         if (response.data.data.login.error) {
