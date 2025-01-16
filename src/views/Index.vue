@@ -10,7 +10,7 @@
                                 <ion-img src="logo.png" style="width: 100px"></ion-img>
                             </div>
                             <div>
-                                <v-text-field name="password" label="Senha" type="password" class="w-100" variant="outlined"></v-text-field>
+                                <v-text-field name="password" label="Senha" type="password" class="w-100" variant="outlined" autofocus></v-text-field>
                             </div>
                             <div>
                                 <v-btn  type="submit" :elevated="false" color="orange-darken-2" :disabled="isLoading" style="display: flex; justify-content: flex-end; width: -webkit-fill-available; padding: 5px 1rem;">
@@ -43,9 +43,8 @@
 import { IonPage, IonImg, IonContent, IonSpinner, IonAlert } from '@ionic/vue';
 import { VBtn, VTextField, VIcon } from 'vuetify/lib/components/index.mjs';
 import { ref } from 'vue';
-import {wait} from '@/utils';
 import { useRouter } from 'vue-router';
-import { CapacitorHttp } from '@capacitor/core';
+import AuthService from '@/services/AuthService';
 
 const isLoading = ref(false);
 const isLoginError = ref(false);
@@ -79,41 +78,11 @@ async function login(password: string) {
     isLoading.value = true;
     isLoginError.value = false;
     try {
-        const query = `
-            mutation Login($password: String!) {
-                login(password: $password) {
-                    error
-                    message
-                    token
-                }
-            }
-        `;
-
-        const response = await CapacitorHttp.post({
-            url: `${import.meta.env.VITE_API_URL}:${import.meta.env.VITE_API_PORT}`,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            data: {
-                query,
-                variables: { password },
-            },
-        });
-
-        await wait(800);
-
-        console.log(response.data.data)
-
-
-        if (response.data.data.login.error) {
-            throw new Error(response.data.data.login.message);
-        }
-
+        await AuthService.login(password);
         router.push('/dashboard');
-
     } catch (error) {
-        isLoginError.value = true;
         console.error(error);
+        isLoginError.value = true;
         loginErrorMessage.value = (error as Error).message;
     }
     isLoading.value = false;

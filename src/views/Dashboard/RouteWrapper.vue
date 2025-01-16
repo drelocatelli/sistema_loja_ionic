@@ -26,18 +26,35 @@
                 <a href="javascript:void(0);" @click="downloadApp()">Atualize aqui</a>
             </div>
         </div>
+        <ion-alert
+            :is-open="error.length != 0"
+            @did-dismiss="error = ''"
+            header="Ocorreu um erro"
+            :message="error"
+            :buttons="alertButtons"
+             />
     </ion-app>
 </template>
 
 <script lang="ts" setup>
-import { IonRouterOutlet, IonMenu, IonContent, IonApp, menuController, IonImg } from '@ionic/vue';
+import { IonRouterOutlet, IonMenu, IonContent, IonApp, menuController, IonImg, IonAlert } from '@ionic/vue';
 import MenuComponent from '@/components/Menu.vue';
 import router from '@/router';
 import { onMounted, ref } from 'vue';
-import { fetchData, wait } from '@/utils';
+import VersionService from '@/services/VersionService';
 
 const isLoading = ref(true);
 const hasNewVersion = ref(false);
+const error = ref('');
+
+const alertButtons = [
+    {
+        text: 'Fechar',
+        handler: () => {
+            window.location.href = '/'
+        }
+    },
+]
 
 function downloadApp() {
     window.open(`${import.meta.env.VITE_API_URL}/raccoon/app.php`, '_system', 'location=yes'); return false;
@@ -57,17 +74,14 @@ async function checkVersion() {
     const currentVersion = import.meta.env.VITE_APP_VERSION;
     isLoading.value = true;
     try {
-        const response = await fetchData({
-            endpoint: `${import.meta.env.VITE_API_VERSION_URL}`,
-            method: 'GET'
-        });
+        const response = await VersionService.checkVersion();
 
-        await wait(1000);
         hasNewVersion.value = (currentVersion != response.current_version);
 
     } catch(err) {
         console.log(err);
-        window.alert('Ocorreu um erro ao verificar versão')
+        error.value = 'Erro ao validar versão';
+        // window.location.href = '/'
 
     } finally {
         isLoading.value = false;

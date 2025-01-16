@@ -6,23 +6,25 @@ export const useSalesStore = defineStore('sales', {
         sales: [] as Sale[]
     }),
     actions: {
+        getSales() {
+            return this.sales;
+        },
         setSales(sales: Sale[]) {
             this.sales = sales;
         },
-        addSale(sale: Sale) {
-            this.sales.push(sale);
+        deleteSales(sales: Sale[]) {
+            this.sales = this.sales.filter(s => !sales.includes(s));
         },
-        removeSale(sale: Sale) {
-            this.sales = this.sales.filter(s => s.id !== sale.id);
-        },
-        updateSale(sale: Sale) {
-            const index = this.sales.findIndex(s => s.id === sale.id);
-            if (index !== -1) {
+        updateSales(sales: Sale[]) {
+            const foundSales = this.sales.filter(s => sales.includes(s));
+
+            foundSales.forEach(sale => {
+                const index = this.sales.indexOf(sale);
                 this.sales[index] = sale;
-            }
+            });
         },
         clearSales() {
             this.sales = [];
-        }
+        },
     }
 });
