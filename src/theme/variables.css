@@ -30,3 +30,7 @@ input {
       transform: scale(1);
     }
   }
+
+.searchbar-input-container input {
+  height: 40px!important;
+}

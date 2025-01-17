@@ -1,3 +1,4 @@
+import StorageFactory from "@/storage";
 import { wait } from "@/utils";
 import { CapacitorHttp } from "@capacitor/core";
 
@@ -36,6 +37,9 @@ class AuthService {
             if (response.data.data.login.error) {
                 throw new Error(response.data.data.login.message);
             }
+
+            const storage = new StorageFactory();
+            storage.setData('token', response.data.data.login.token);
 
         } catch(err: any) {
             throw new Error(err?.message ?? 'Ocorreu um erro inesperado');

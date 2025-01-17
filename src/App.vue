@@ -67,7 +67,7 @@ console.log('body', dialogStore.body);
 
   @media screen and (max-width: 800px) {
     & .positioned-dialog {
-      width: 80%;
+      min-width: 80%;
     }
   }
   

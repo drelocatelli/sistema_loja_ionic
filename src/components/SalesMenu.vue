@@ -2,10 +2,10 @@
     <div id="sales-menu">
         <ul>
             <li>
-                <a href="">Vendas</a>
+                <a href="/dashboard/vendas">Vendas</a>
             </li>
             <li>
-                <a href="">Nota fiscal</a>
+                <a href="">Notas fiscais</a>
             </li>
             <li>
                 <a href="">Categorias</a>

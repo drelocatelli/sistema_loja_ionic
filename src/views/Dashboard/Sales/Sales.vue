@@ -1,40 +1,64 @@
 <template>
     <ion-page>
-        <dashboard-layout page-title="Vendas">
-            <template #actions>
-                <div class="right-sidebar">
-                    <div class="mb-3">
-                        <v-btn variant="elevated" class="btn-orange">Adicionar venda</v-btn>
-                    </div>
-                    <div class="search-bar">
-                        <v-text-field label="Pesquisar" variant="outlined"></v-text-field>
-                    </div>
-                </div>
-            </template>
-            sales
-        </dashboard-layout>
+        <default-dashboard-page 
+            title="Vendas"
+            right-btn-title="Nova venda"
+            :right-btn-fn="novaVenda"
+            :data-headers="dataHeaders"
+            :items="data"
+        />
     </ion-page>
 </template>
 
 <script lang="ts" setup>
 import { IonPage } from '@ionic/vue';
-import { VBtn, VTextField } from 'vuetify/lib/components/index.mjs';
-</script>
+import DefaultDashboardPage from '@/components/DefaultDashboardPage.vue';
+import { onMounted, ref } from 'vue';
+import SalesService from '@/services/SalesService';
 
-<style lang="scss" scoped>
-.right-sidebar {
-    display: flex;
-    align-items: flex-end!important;
-    flex-direction: column;
-
-    & .search-bar {
-        width: 25vw;
-
-        @media screen and (max-width: 750px) {
-            width: 90vw;
-        }
-    }
-
+const data = ref([]);
+function novaVenda() {
+    window.alert('opa')
 }
 
-</style>
+const dataHeaders = [
+    {
+        title: 'N° série',
+    },
+    {
+        title: 'Produto',
+    },
+    {
+        title: 'Descrição',
+    },
+    {
+        title: 'Cliente'
+    },
+    {
+        title: 'Vendedor'
+    },
+    {
+        title: 'Data'
+    },
+    {
+        title: 'Preço'
+    },
+    {
+        title: 'Quantidade'
+    },
+    {
+        title: 'Total'
+    },
+];
+
+async function fetch() {
+    await SalesService.get();
+}
+
+onMounted(async () => {
+    await fetch();
+})
+
+
+</script>
+
