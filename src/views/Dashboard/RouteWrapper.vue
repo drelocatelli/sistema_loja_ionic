@@ -33,7 +33,9 @@
             :message="error"
             :buttons="alertButtons"
              />
+            
     </ion-app>
+    
 </template>
 
 <script lang="ts" setup>
