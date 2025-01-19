@@ -39,6 +39,7 @@ import '@/theme/variables.css';
 import '@mdi/font/css/materialdesignicons.css';
 import { createVuetify } from 'vuetify/lib/framework.mjs';
 import DashboardLayout from './layout/DashboardLayout.vue';
+import DefaultDashboardPage from './components/DefaultDashboardPage.vue';
 
 
 const Vuetify = createVuetify({
@@ -59,6 +60,7 @@ const app = createApp(App)
 .use(pinia)
 
 app.component('dashboard-layout', DashboardLayout)
+app.component('default-dashboard-page', DefaultDashboardPage)
 
 router.isReady().then(() => {
   app.mount('#app');

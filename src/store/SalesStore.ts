@@ -1,9 +1,11 @@
+import Pagination from "@/types/Pagination";
 import { Sale } from "@/types/Sale";
 import { defineStore } from "pinia";
 
 export const useSalesStore = defineStore('sales', {
     state: () => ({
-        sales: [] as Sale[]
+        sales: [] as Sale[],
+        pagination: {} as Pagination
     }),
     actions: {
         getSales() {
@@ -26,5 +28,12 @@ export const useSalesStore = defineStore('sales', {
         clearSales() {
             this.sales = [];
         },
+
+        getPagination() {
+            return this.pagination;
+        },
+        setPagination(pagination: Pagination) {
+            this.pagination = pagination;
+        }
     }
 });

@@ -14,6 +14,7 @@
             <div class="container">
                 <v-data-table 
                     items-per-page-text="Itens por página"
+                    no-data-text="Nada encontrado"
                     :headers="props.dataHeaders"
                     :items="props.items"
                 />

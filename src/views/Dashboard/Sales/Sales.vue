@@ -5,18 +5,19 @@
             right-btn-title="Nova venda"
             :right-btn-fn="novaVenda"
             :data-headers="dataHeaders"
-            :items="data"
+            :items="salesStore.getSales()"
         />
     </ion-page>
 </template>
 
 <script lang="ts" setup>
 import { IonPage } from '@ionic/vue';
-import DefaultDashboardPage from '@/components/DefaultDashboardPage.vue';
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import SalesService from '@/services/SalesService';
+import { useSalesStore } from '@/store/SalesStore';
 
-const data = ref([]);
+const salesStore = useSalesStore();
+
 function novaVenda() {
     window.alert('opa')
 }
@@ -51,12 +52,8 @@ const dataHeaders = [
     },
 ];
 
-async function fetch() {
-    await SalesService.get();
-}
-
 onMounted(async () => {
-    await fetch();
+    await SalesService.get();
 })
 
 

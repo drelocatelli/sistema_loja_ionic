@@ -1,10 +1,13 @@
 import StorageFactory from "@/storage";
+import { useSalesStore } from "@/store/SalesStore";
 import { fetchData } from "@/utils";
 
 class SalesService {
 
     static async get() {
         try {
+            const store = useSalesStore();
+
 
             const query = `
                 query GetSales {
@@ -53,7 +56,10 @@ class SalesService {
                 },
             });
 
-            return response;
+            store.setSales(response.data.getSales.sales);
+            store.setPagination(response.data.getSales.pagination);
+
+            return response.data.getSales;
 
         } catch(err) {
             console.log(err);
