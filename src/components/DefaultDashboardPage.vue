@@ -15,18 +15,22 @@
                 <v-data-table 
                     items-per-page-text="Itens por página"
                     no-data-text="Nada encontrado"
-                    :headers="props.dataHeaders"
                     :items="props.items"
-                />
+                    :loading="props.isLoading"
+                >
+                    <template v-slot:loading>
+                        <v-skeleton-loader type="table-row@10"></v-skeleton-loader>
+                    </template>
+                </v-data-table>
             </div>
         </div>
     </dashboard-layout>
 </template>
 
 <script setup>
-import { VBtn, VDataTable } from 'vuetify/lib/components/index.mjs';
+import { VBtn, VDataTable, VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
 import { IonSearchbar } from '@ionic/vue';
-
+import { onMounted } from 'vue';
 
 const props = defineProps({
     title: {
@@ -48,8 +52,16 @@ const props = defineProps({
     items: {
         type: Array,
         default: () => []
+    },
+    isLoading: {
+        type: Boolean,
+        default: false
     }
 });
+
+onMounted(() => {
+    console.log(props.items)
+})
 
 </script>
 

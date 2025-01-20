@@ -1,13 +1,14 @@
 import StorageFactory from "@/storage";
 import { useSalesStore } from "@/store/SalesStore";
-import { fetchData } from "@/utils";
+import { fetchData, wait } from "@/utils";
 
 class SalesService {
 
     static async get() {
+        const store = useSalesStore();
         try {
-            const store = useSalesStore();
 
+            store.setIsLoading(true);
 
             const query = `
                 query GetSales {
@@ -20,21 +21,21 @@ class SalesService {
                         }
                         sales {
                             serial
+                            product {
+                                name
+                                price
+                            }
+                            description
                             client {
                                 name
                             }
                             colaborator {
                                 name
                             }
+                            date
                             id
                             total
-                            product {
-                                name
-                                price
-                            }
-                            description
                             created_at
-                            date
                         }
                     }
                 }
@@ -58,12 +59,16 @@ class SalesService {
 
             store.setSales(response.data.getSales.sales);
             store.setPagination(response.data.getSales.pagination);
+            
+            await wait(1000)
+            store.setIsLoading(false);
 
             return response.data.getSales;
-
+            
         } catch(err) {
+            store.setError(true)
             console.log(err);
-        }
+        } 
     }
     
 }

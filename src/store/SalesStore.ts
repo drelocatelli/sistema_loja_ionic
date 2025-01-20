@@ -5,7 +5,9 @@ import { defineStore } from "pinia";
 export const useSalesStore = defineStore('sales', {
     state: () => ({
         sales: [] as Sale[],
-        pagination: {} as Pagination
+        pagination: {} as Pagination,
+        isLoading: false as boolean,
+        error: false as boolean
     }),
     actions: {
         getSales() {
@@ -34,6 +36,18 @@ export const useSalesStore = defineStore('sales', {
         },
         setPagination(pagination: Pagination) {
             this.pagination = pagination;
+        },
+        setIsLoading(isLoading: boolean) {
+            this.isLoading = isLoading;
+        },
+        getIsLoading() {
+            return this.isLoading;
+        },
+        setError(error: boolean) {
+            this.error = error;
+        },
+        getError() {
+            return this.error;
         }
     }
 });
