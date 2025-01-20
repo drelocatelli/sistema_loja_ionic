@@ -2,6 +2,9 @@
   <ion-app>
     <ion-router-outlet />
   </ion-app>
+  <div id="credits">
+    App by Andressa Lucatelli
+  </div>
   <div id="dialog-bg"  @click="dialogStore.closeDialog()" v-if="dialogStore.isOpen">
   </div>
   <div id="dialog-wrapper" :style="{display: dialogStore.isOpen ? 'flex' : 'none'}">
@@ -32,11 +35,21 @@ import { useDialogStore } from './store/DialogStore';
 
 const dialogStore = useDialogStore();
 
-console.log('body', dialogStore.body);
-
 </script>
 
 <style langs="scss">
+
+#credits {
+  position: fixed;
+  bottom: 8px;
+  right: 15px;
+  font-size: 10px;
+  color: rgb(80, 80, 80);
+  text-transform: uppercase;
+  background-color: #ffffffb0;
+  padding: 0 5px;
+  pointer-events: none;
+}
 
 #dialog-bg {
   background-color: rgba(19, 18, 18, 0.397);
