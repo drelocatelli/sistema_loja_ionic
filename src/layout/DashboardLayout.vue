@@ -50,7 +50,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-ion-content {
+ion-content:not(.no-bg) {
     --background: url('bg-render.png') no-repeat center center / cover;
 }
 #dashboard-wrapper {

@@ -6,7 +6,7 @@
                     <ion-searchbar placeholder="Pesquisar" show-clear-button="always" />
                 </div>
                 <div class="mb-3 mr-2">
-                    <v-btn variant="tonal" class="btn-orange" @click="props.rightBtnFn">{{ props.rightBtnTitle }}</v-btn>
+                    <v-btn variant="tonal" class="btn-orange" @click="props.hasModal ? openModal() : props.rightBtnFn">{{ props.rightBtnTitle }}</v-btn>
                 </div>
             </div>
         </template>
@@ -25,17 +25,67 @@
             </div>
         </div>
     </dashboard-layout>
+    <ion-modal ref="modal" :is-open="isModalOpen" class="modal" @willDismiss="closeModal">
+        <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-button @click="isModalOpen = false">
+                        Cancelar
+                    </ion-button>
+                </ion-buttons>
+                <ion-title>
+                    <div style="text-align: center;">
+                        {{ props.modalTitle }}
+                    </div>
+                </ion-title>
+                <ion-buttons slot="end">
+                    <ion-button @click="modalBtnFn && closeModal()">
+                        {{ props.modalConfirmTxt }}
+                    </ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="no-bg" >
+            <slot name="modal-content" />
+        </ion-content>
+    </ion-modal>
 </template>
 
 <script setup>
 import { VBtn, VDataTable, VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
-import { IonSearchbar } from '@ionic/vue';
-import { onMounted } from 'vue';
+import { IonSearchbar, IonModal, IonHeader, IonToolbar, IonButtons, IonButton, IonContent, IonTitle } from '@ionic/vue';
+import { onMounted, ref } from 'vue';
+
+const isModalOpen = ref(false);
+
+function openModal() {
+    isModalOpen.value = true;
+}
+
+function closeModal() {
+    isModalOpen.value = false;
+}
 
 const props = defineProps({
     title: {
         type: String,
         default: 'Título da página'
+    },
+    hasModal: {
+        type: Boolean,
+        default: false
+    },
+    modalTitle: {
+        type: String,
+        default: 'Título do modal'
+    },
+    modalConfirmTxt: {
+        type: String,
+        default: 'Confirmar'
+    },
+    modalBtnFn: {
+        type: Function,
+        default: () => {}
     },
     rightBtnTitle: {
         type: String,
